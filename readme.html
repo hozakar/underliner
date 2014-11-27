@@ -18,15 +18,8 @@
 <p>Animation</p>
 <pre><code class="lang-html">&lt;script&gt;
     $(&#39;.underliner&#39;).underliner({
-        direction: &#39;center&#39; // Default, animation starts from center
-    });
-
-    $(&#39;.underliner&#39;).underliner({
-        direction: &#39;left&#39; // animates from left to right
-    });
-
-    $(&#39;.underliner&#39;).underliner({
-        direction: &#39;right&#39; // animates from right to left
+        direction: &#39;center&#39; /* &#39;center&#39;, &#39;left&#39; or &#39;right&#39;, defaults to &#39;center&#39;
+                               Underline animation starting point. */
     });
 
     $(&#39;.underliner&#39;).underliner({
@@ -36,14 +29,15 @@
     });
 
     $(&#39;.underliner&#39;).underliner({
-        duration: 400 // animation duration in milliseconds, defaults to 200
+        duration: 400 /* Animation duration in milliseconds, defaults to 200 */
     });
 
     $(&#39;.underliner&#39;).underliner({
-        show: true /* element appears underlined instead of animating on hover
-                      defaults to false */
+        show: true /* Element appears underlined instead of animating on hover.
+                      Defaults to false */
     });
 
+    /* You can apply these parameters in any combination of your liking */
 &lt;/script&gt;</code></pre>
 <h3 id="important">Important</h3>
 <p>May only be applied &lt;a&gt; elements which displays inline. Since this plugin mimics the background-color, please only use on solid backgrounds.</p>

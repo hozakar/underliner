@@ -28,15 +28,8 @@ Animation
 ```html
 <script>
 	$('.underliner').underliner({
-		direction: 'center' // Default, animation starts from center
-	});
-
-	$('.underliner').underliner({
-		direction: 'left' // animates from left to right
-	});
-	
-	$('.underliner').underliner({
-		direction: 'right' // animates from right to left
+		direction: 'center' /* 'center', 'left' or 'right', defaults to 'center'
+							   Underline animation starting point. */
 	});
 
 	$('.underliner').underliner({
@@ -46,14 +39,15 @@ Animation
 	});
 
 	$('.underliner').underliner({
-		duration: 400 // animation duration in milliseconds, defaults to 200
+		duration: 400 /* Animation duration in milliseconds, defaults to 200 */
 	});
 
 	$('.underliner').underliner({
-		show: true /* element appears underlined instead of animating on hover
-					  defaults to false */
+		show: true /* Element appears underlined instead of animating on hover.
+					  Defaults to false */
 	});
 
+	/* You can apply these parameters in any combination of your liking */
 </script>
 ```
 
