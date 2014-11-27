@@ -1,45 +1,68 @@
-/* *******************************
+/**
+ *  Underliner v1.0.0
+ *  https://github.com/hozakar/underliner
+ *
+ *  Copyright 2014, Hakan Ozakar
+ *  http://beltslib.net
+ *
+ *  Licensed under CC0 1.0 Universal Licence:
+ *  https://creativecommons.org/publicdomain/zero/1.0/
+ */
 
--- Usage --
+/**
+	-- Usage --
 
-$(anchor-element).underliner({
+	$(element).underliner({
+		color: '', 				// -> Any css color
+		direction: 'center', 	// -> left, right or center (default: center)
+		duration: 200, 			// -> Animation duration in milliseconds (default: 200)
+		show: false 			// -> Boolean (default: false). If true,
+								//    element appears underlined instead of
+								//    animating on hover
+	});
+
+	Applying underliner to an element multiple times doesn't cause any problems since
+	it first terminates the previous instance. So you can apply new parameters to elements
+	for refreshing if needed.
 	
-});
+	-- To terminate --
 
--- Values --
+	$(element).underlinerTerminate();
 
-
-******************************* */
+ */
 
 "use strict";
 (function($) {
 	var bl_underliner = {
 		family: new Array(),
-		init: function(family, rp) {
+		init: function(family) {
 			var underliner = family.parameters;
 			underliner.duration = parseInt(underliner.duration) >= 0 ? parseInt(underliner.duration) : 200;
 
 			var counter = 0;
 			family.element.each(function() {
+				terminate(this);
+
 				if(this.tagName == "A" && $(this).css('display') == 'inline') {
 					var $this = $(this);
 					var wrapperId = 'underliner-wrapper-' + family.id + '-' + counter++;
 					$this.wrap('<span id="' + wrapperId + '" class="underliner-wrapper"></span>');
 					var $wrapper = $('#' + wrapperId);
 					
-					$wrapper.append('<span class="underliner-mask">apologies geological</span>');
+					$wrapper.append('<span class="underliner-mask">' + $this.html() + '</span>');
 					$wrapper.append('<span class="underliner-copier"></span>');
 					
 					$wrapper.css({
 						'font' : $this.css('font'),
 						'line-height' : $this.css('line-height'),
 						'letter-spacing' : $this.css('letter-spacing'),
-						'word-spacing' : $this.css('word-spacing')
+						'word-spacing' : $this.css('word-spacing'),
+						'text-rendering' : $this.css('text-rendering')
 					});
 					var lineTop = parseInt($wrapper.css('font-size'));
 					var lineHeight = parseInt($wrapper.css('line-height'));
 					if(lineHeight) {
-						lineTop += (lineHeight - lineTop * 1.15) / 2;
+						lineTop += (lineHeight - lineTop * 1.125) / 2;
 					}
 
 					if(underliner.show === true) $('#' + wrapperId + ' .underliner-copier').css({
@@ -78,7 +101,7 @@ $(anchor-element).underliner({
 								break;
 							}
 							
-							use = dummy.split(')')[0].split(',').length == 4 ? (parseInt(dummy.split(')')[0].split(',')[3]) > 0 ? 1 : 0) : 1;
+							use = dummy.split(')')[0].split(',').length == 4 ? (parseFloat(dummy.split(')')[0].split(',')[3]) > 0 ? 1 : 0) : 1;
 							if(use) {
 								bgc = dummy;
 								break;
@@ -88,7 +111,15 @@ $(anchor-element).underliner({
 						}
 					}
 
-					$(mask).css('text-shadow', '.05em 0 0 ' + bgc + ', .1em 0 0 ' + bgc + ', .15em 0 0 ' + bgc + ', -.05em 0 0 ' + bgc + ', -.1em 0 0 ' + bgc + ', -.15em 0 0 ' + bgc);
+					var shadow = new Array();
+
+					for(var i = -2; i <= 2; i++) for(var j = -1; j < 2; j++) {
+						shadow.push( (.05 * i) + 'em ' + (.05 * j) + 'em 0 ' + bgc );
+					}
+
+					$(mask).css({
+						'text-shadow' : shadow.join(', ')
+					});
 
 					$this.addClass('underliner-link');
 				}
@@ -96,20 +127,14 @@ $(anchor-element).underliner({
 		}
 	}
 	
-	/* Functions */
-
-	/* End: Functions */
-	
 	/* Plug-in Start */
 	$.fn.underliner = function(parameters) {
 		var id = -1;
-		var refreshParameters = false;
 		for(var i = 0; i < bl_underliner.family.length; i++) {
 			var dummy = true;
 			for(var x in this) if(this[x] != bl_underliner.family[i].element[x]) dummy = false;
 			if(dummy) {
 				id = i;
-				refreshParameters = true;
 				break;
 			}
 		}
@@ -130,13 +155,34 @@ $(anchor-element).underliner({
 			element: this,
 			parameters: prm
 		}
-		bl_underliner.init(bl_underliner.family[id], refreshParameters);
+		bl_underliner.init(bl_underliner.family[id]);
 	}
 	/* End: Plug-in Start */
 
 	/* underliner terminate */
 	$.fn.underlinerTerminate = function() {
-
+		this.each(function() {
+			terminate(this);
+		});
 	}
 	/* End: underliner terminate */
+
+	/* Functions */
+	function terminate(el) {
+		if(!el) return;
+
+		if(
+			!$(el).hasClass('underliner-link') ||
+			!$(el).parent('.underliner-wrapper').length
+		) return;
+
+		var $wrapper = $(el).parent('.underliner-wrapper');
+
+		$wrapper.find('.underliner-mask, .underliner-copier').remove();
+
+		$(el).unwrap();
+
+		$(el).removeClass('underliner-link');
+	}
+	/* End: Functions */
 })(jQuery);

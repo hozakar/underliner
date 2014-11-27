@@ -1,3 +1,14 @@
+/**
+ *  Underliner v1.0.0
+ *  https://github.com/hozakar/underliner
+ *
+ *  Copyright 2014, Hakan Ozakar
+ *  http://beltslib.net
+ *
+ *  Licensed under CC0 1.0 Universal Licence:
+ *  https://creativecommons.org/publicdomain/zero/1.0/
+ */
+
 .underliner-wrapper {
   display: inline-block;
   position: relative;
@@ -7,7 +18,7 @@
 
 .underliner-wrapper .underliner-link {
   position: relative;
-  text-decoration: none;
+  text-decoration: none !important;
   z-index: 3;
 }
 

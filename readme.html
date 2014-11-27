@@ -1,0 +1,57 @@
+<h1 id="underliner-jquery-plugin">Underliner jQuery Plugin</h1>
+<h3 id="underliner">Underliner</h3>
+<blockquote>
+<p>v1.0.0</p>
+</blockquote>
+<h3 id="features-">Features:</h3>
+<p>Creates animated underline for links.</p>
+<h3 id="usage">Usage</h3>
+<p>First you need to include necessary files</p>
+<pre><code class="lang-html">&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;underliner.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;underliner.css&quot; /&gt;</code></pre>
+<p>Then simply apply underliner to &lt;a&gt; elements of your choice</p>
+<pre><code class="lang-html">&lt;script&gt;
+    $(&#39;.underliner&#39;).underliner();
+&lt;/script&gt;</code></pre>
+<h3 id="parameters">Parameters</h3>
+<p>Animation</p>
+<pre><code class="lang-html">&lt;script&gt;
+    $(&#39;.underliner&#39;).underliner({
+        direction: &#39;center&#39; // Default, animation starts from center
+    });
+
+    $(&#39;.underliner&#39;).underliner({
+        direction: &#39;left&#39; // animates from left to right
+    });
+
+    $(&#39;.underliner&#39;).underliner({
+        direction: &#39;right&#39; // animates from right to left
+    });
+
+    $(&#39;.underliner&#39;).underliner({
+        color: &#39;#f00&#39; /* Underline color, any valid css color.
+                         If omitted underline will be the same color
+                         as the applied element */
+    });
+
+    $(&#39;.underliner&#39;).underliner({
+        duration: 400 // animation duration in milliseconds, defaults to 200
+    });
+
+    $(&#39;.underliner&#39;).underliner({
+        show: true /* element appears underlined instead of animating on hover
+                      defaults to false */
+    });
+
+&lt;/script&gt;</code></pre>
+<h3 id="important">Important</h3>
+<p>May only be applied &lt;a&gt; elements which displays inline. Since this plugin mimics the background-color, please only use on solid backgrounds.</p>
+<p><a href="http://beltslib.net/">beltslib.net</a></p>
+<h3 id="dependencies">Dependencies</h3>
+<ul>
+<li><a href="http://jquery.com/">jQuery</a></li>
+</ul>
+<h2 id="license">License</h2>
+<p>CC0 1.0 Universal Licence</p>
+<p>Dependecies have their own licence information. Please view them before use.</p>

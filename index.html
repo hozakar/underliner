@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	
+	<title>Underliner, a jQuery Plugin</title>
+	<meta charset="utf-8" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="underliner.js"></script>
 	<link rel="stylesheet" href="underliner.css" />
@@ -10,17 +10,41 @@
 	<style>
 		html {
 			font-family: sans-serif;
-			font-size: 80px;
+			font-size: 18px;
 		}
 	</style>
 
 </head>
 <body>
-	<a href="#" class="underliner" style="line-height: 1.6; letter-spacing: 1px; word-spacing: 10px;">apologies geological</a><br>
-	<a href="#" class="underliner" style="letter-spacing: 1px; word-spacing: 10px;">apologies geological</a>
+	<p>
+		Aslında nette linklerin alt çizgili kullanımı bir stardarttır. Öte yandan, bu standart çirkin bir görüntü oluşturduğundan hemen hemen hiçbir tasarımcı linkleri alt çizgili kullanmaz. Bu görüntü bozukluğu benim de canımı sıkıyordu, biraz olsun estetik katabilirim belki diye bu eklentiyi yazdım.
+	</p>
 
+	<p>
+		Beğeneceğinizi umarım... Ve elbette, eğer beğendiyseniz lütfen paylaşın. Belki birilerinin daha işine yarar.
+	</p>
+	
+	<h2>Bir Örnek</h2>
+
+	<p>
+		<a href="#" class="underliner" style="letter-spacing: 1px; font-size: 28px;">Adipisicing fugit voluptas</a>
+	</p>
+
+	<h2>Aman dikkat</h2>
+
+	<p>
+		Yalnızca <strong>inline</strong> görüntülenen <strong>&lt;a&gt;</strong> elementlerine uygulanabilir. Arka plan rengini <a href="#" class="underliner-magenta">taklit ederek</a> çalıştığından solid arka plan rengine sahip olmayan (<a href="#" class="underliner-green">örneğin arka planı resim olan</a>) alanlarda <a href="#" class="underliner-red">uygulanırsa</a> kötü sonuç verir.
+	</p>
+
+	<p>
+		Uygulandığı <a href="#" class="underliner-red">elementin <strong>display</strong> özelliğini</a> <strong>inline-block</strong> olarak değiştirir.
+	</p>
+	
 	<script>
 		$('.underliner').underliner();
+		$('.underliner-red').underliner({ color: 'red' });
+		$('.underliner-green').underliner({ color: 'green', show: true });
+		$('.underliner-magenta').underliner({ color: 'magenta' });
 	</script>
 </body>
 </html>
