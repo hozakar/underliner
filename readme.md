@@ -47,7 +47,7 @@ Animation
 					  Defaults to false */
 	});
 
-	/* You can apply these parameters in any combination of your liking */
+	/* You can apply these parameters in any combination. */
 </script>
 ```
 
