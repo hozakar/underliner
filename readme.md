@@ -24,7 +24,6 @@ Then simply apply underliner to &lt;a&gt; elements of your choice
 ```
 
 ### Parameters
-Animation
 ```html
 <script>
 	$('.underliner').underliner({
