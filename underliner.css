@@ -1,0 +1,38 @@
+.underliner-wrapper {
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.underliner-wrapper .underliner-link {
+  position: relative;
+  text-decoration: none;
+  z-index: 3;
+}
+
+.underliner-wrapper .underliner-mask {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  color: transparent;
+  z-index: 2;
+}
+
+.underliner-wrapper .underliner-copier {
+  position: absolute;
+  display: inline-block;
+  height: .1em;
+  width: 0;
+  margin: auto;
+  padding: 0;
+  border-radius: 99em;
+  z-index: 1;
+}
+
+.underliner-wrapper:hover .underliner-copier {
+  width: 100%;
+}
